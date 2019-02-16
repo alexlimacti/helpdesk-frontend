@@ -1,0 +1,40 @@
+<div class="login-box">
+  <div class="login-logo">
+    <a href="#"><b>Intra</b>net</a>
+  </div>
+  <div class="login-box-body">
+    <p class="login-box-msg">Inicie sua sessão</p>
+
+    <form #form="ngForm" (ngSubmit)="login()" >
+      <div class="alert alert-error" role="alert" *ngIf="message">
+        <strong>Invalid email or password</strong>
+      </div>
+      <div [ngClass]="getFormGroupClass(email.invalid, password.dirty)">
+        <input type="email" [(ngModel)]="user.email" name="email" class="form-control" id="inputEmail" #email="ngModel" placeholder="Email" email>
+        <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+      </div>
+      <div [ngClass]="getFormGroupClass(email.invalid, password.dirty)">
+        <input type="password" [(ngModel)]="user.password" name="password" class="form-control" id="inputPassword" placeholder="Password" #password="ngModel" required>
+        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+      </div>
+      <div class="row">
+        <div class="col-xs-8">
+          <div class="checkbox icheck">
+            <label>
+              <input type="checkbox"> Lembrar sessão
+            </label>
+          </div>
+        </div>
+        <!-- /.col -->
+        <div class="col-xs-4">
+            <button type="submit" class="btn btn-primary btn-block btn-flat" (click)="cancelLogin()">Cancelar</button>
+            <button type="submit" class="btn btn-primary btn-block btn-flat" (click)="login()">Entrar</button>
+        </div>
+        <!-- /.col -->
+      </div>
+    </form>
+
+    <a href="#">Esqueci minha senha</a><br>
+
+  </div>
+</div>
